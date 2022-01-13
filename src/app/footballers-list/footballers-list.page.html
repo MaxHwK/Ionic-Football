@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Liste des Footballers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h4>Ajout d'un nouveau Footballer</h4>
+  <ion-button routerLink="/tab/add">Ajouter <ion-icon name="add-circle"></ion-icon></ion-button>
+  <h4>Liste des Footballers déjà présents au sein de mon application</h4>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let footballer of footballers">
+        <ion-card [routerLink]="['/tab/footballers/', footballer.id]">
+          <img [src]="footballer.photo" alt="Veuillez choisir une nouvelle photo !">
+          <ion-label>{{footballer.lastname}}</ion-label>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

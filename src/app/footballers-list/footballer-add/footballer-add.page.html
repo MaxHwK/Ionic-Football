@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab/footballers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ajout d'un nouveau Footballer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item id="first">
+    <ion-label>Lien d'une Photo :</ion-label>
+    <ion-input type="text" [(ngModel)]="footballer.photo" placeholder="https://www.foot.com/photo.jpg" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Prénom :</ion-label>
+    <ion-input type="text" [(ngModel)]="footballer.firstname" placeholder="Lionel" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nom :</ion-label>
+    <ion-input type="text" [(ngModel)]="footballer.lastname" placeholder="MESSI" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Poste :</ion-label>
+    <ion-input type="text" [(ngModel)]="footballer.post" placeholder="Attaquant" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nationalité :</ion-label>
+    <ion-input type="text" [(ngModel)]="footballer.nationality" placeholder="Argentin" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Club :</ion-label>
+    <ion-input type="text" [(ngModel)]="footballer.club" placeholder="PSG" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nombre de buts :</ion-label>
+    <ion-input type="number" [(ngModel)]="footballer.goals" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nombre de trophées :</ion-label>
+    <ion-input type="number" [(ngModel)]="footballer.trophies" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Mettre ce joueur sur le banc ?</ion-label>
+    <ion-toggle [(ngModel)]="footballer.onBench"></ion-toggle>
+  </ion-item>
+  <ion-button (click)="add()">Ajouter <ion-icon name="add-circle"></ion-icon></ion-button>
+</ion-content>

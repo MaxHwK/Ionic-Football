@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab/footballers"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="footballer">Informations sur {{footballer.lastname}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!modif">
+    <ion-grid *ngIf="footballer">
+      <ion-button (click)="setModif()">Modifier les Informations <ion-icon name="create"></ion-icon></ion-button>
+      <img [src]="footballer.photo">
+      <h3>{{footballer.firstname}} {{footballer.lastname}}</h3>
+      <h4>({{footballer.post}} | {{footballer.club}})</h4>
+      <h6 id="footnationality"><ion-icon name="pin"></ion-icon> {{footballer.lastname}} est <b>{{footballer.nationality}}</b>.</h6>
+
+      <h6><ion-icon name="trophy"></ion-icon> {{footballer.lastname}} a marqué pas moins de <b>{{footballer.goals}}</b> 
+        buts ce qui lui a permis de remporter <b>{{footballer.trophies}}</b> trophées.</h6>
+
+      <h6><ion-icon name="umbrella"></ion-icon> Ce joueur est-il sur le banc ? 
+        <ion-icon *ngIf="footballer.onBench" name="checkmark-circle"></ion-icon>
+        <ion-icon *ngIf="!footballer.onBench" name="close-circle"></ion-icon> </h6>
+      
+        <ion-button (click)="onDelete(footballer.id)">Supprimer ce Joueur <ion-icon name="trash"></ion-icon></ion-button> 
+    </ion-grid>
+  </div>
+  <div *ngIf="modif && footballer" class="modifinfos">
+    <ion-item>
+      <ion-label>Lien d'une Photo :</ion-label>
+      <ion-input type="text" [(ngModel)]="footballer.photo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prénom :</ion-label>
+      <ion-input type="text" [(ngModel)]="footballer.firstname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nom :</ion-label>
+      <ion-input type="text" [(ngModel)]="footballer.lastname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Poste :</ion-label>
+      <ion-input type="text" [(ngModel)]="footballer.post"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nationalité :</ion-label>
+      <ion-input type="text" [(ngModel)]="footballer.nationality"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Club :</ion-label>
+      <ion-input type="text" [(ngModel)]="footballer.club"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre de buts :</ion-label>
+      <ion-input type="number" [(ngModel)]="footballer.goals"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre de trophées :</ion-label>
+      <ion-input type="number" [(ngModel)]="footballer.trophies"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mettre ce joueur sur le banc ?</ion-label>
+      <ion-toggle [(ngModel)]="footballer.onBench"></ion-toggle>
+    </ion-item>
+    <p class="text-center">
+      <ion-button (click)="onModif()">Accepter les modifications <ion-icon name="checkmark-circle"></ion-icon></ion-button>
+    </p>
+  </div>
+</ion-content>

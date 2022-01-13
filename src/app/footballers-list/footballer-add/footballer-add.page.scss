@@ -1,0 +1,23 @@
+ion-content, ion-grid {
+    --background: url(../../../assets/img/fond-terrain.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+#first {
+    margin-top: 40px;
+}
+
+ion-button {
+    width: 40%;
+    margin: 20px 0px 0px 30%;
+}
+
+ion-icon {
+    margin-left: 5px;
+}
+
+ion-label {
+    font-weight: bold;
+}
