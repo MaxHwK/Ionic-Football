@@ -38,7 +38,7 @@ export class FootballerAddPage implements OnInit {
 
   async presentToastEmpty() {
     const toast = this.toastCtrl.create({
-      message: 'Veuillez remplir tous les champs !',
+      message: "Veuillez remplir tous les champs avant d'ajouter !",
       duration: 2000
     });
     (await toast).present();
@@ -46,7 +46,8 @@ export class FootballerAddPage implements OnInit {
 
   add() {
     if (this.footballer.photo !== "" && this.footballer.firstname !== "" && this.footballer.lastname !== "" && 
-    this.footballer.post !== "" && this.footballer.nationality !== "" && this.footballer.club !== "" ) {
+    this.footballer.post !== "" && this.footballer.nationality !== "" && this.footballer.club !== "" && 
+    this.footballer.goals !== null && this.footballer.trophies !== null) {
       this.Footballer.saveNewFootballers(this.footballer).subscribe(() => {
         this.footballer = new Footballer();
         this.presentToast();
