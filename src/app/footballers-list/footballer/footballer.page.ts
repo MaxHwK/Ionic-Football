@@ -63,7 +63,7 @@ export class FootballerPage implements OnInit {
 
   async presentToastEmpty() {
     const toast = this.toastCtrl.create({
-      message: 'Veuillez re-remplir tous les champs !',
+      message: 'Veuillez re-remplir tous les champs avant de modifier !',
       duration: 2000
     });
     (await toast).present();
@@ -71,35 +71,14 @@ export class FootballerPage implements OnInit {
 
   onModif() {
     if (this.footballer.photo !== "" && this.footballer.firstname !== "" && this.footballer.lastname !== "" && 
-    this.footballer.post !== "" && this.footballer.nationality !== "" && this.footballer.club !== "" ) {
+    this.footballer.post !== "" && this.footballer.nationality !== "" && this.footballer.club !== "" && 
+    this.footballer.goals !== null && this.footballer.trophies !== null) {
       this.Footballer.update(this.footballer).subscribe(() => {
         this.presentToast();
         this.modif = false;
       });
     } else {
       this.presentToastEmpty();
-    }
-  }
-
-  async setDelete() {
-    if(!this.delete) {
-      const alert = await this.alertCtrl.create({
-        header: 'Suppression',
-        subHeader: 'Voulez-vous vraiment supprimer ce Footballer ?',
-        buttons: [
-          {
-            text: 'Non',
-            role: 'Cancel'
-          }, {
-            text: 'Oui',
-            handler: () => { this.delete = !this.delete},
-          }
-        ]
-      });
-  
-      await alert.present();
-    } else {
-    this.delete = !this.delete;
     }
   }
 
@@ -112,9 +91,11 @@ export class FootballerPage implements OnInit {
   }
 
   onDelete(id: any) {
-    this.Footballer.delete(id);
-    this.presentToastSuppr();
-    this.router.navigate(['/tab/footballers']);
+    if(confirm("Etes-vous sûr de vouloir supprimer ce joueur ?")) {
+      this.Footballer.delete(id);
+      this.presentToastSuppr();
+      this.router.navigate(['/tab/footballers']);
+    }
   }
 
 }
